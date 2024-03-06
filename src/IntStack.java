@@ -15,7 +15,7 @@ public class IntStack {
 
         public void showStatus(String workMsg) {
 
-            System.out.print(workMsg + " 후 배열 상태: [ ");
+            System.out.print(workMsg + " 후 스택 상태: [ ");
             for (int stackValue : this.stackArr) {
                 System.out.print(stackValue + " ");
             }
