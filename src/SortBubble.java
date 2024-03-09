@@ -24,7 +24,6 @@ public class SortBubble {
             if (exchangeCount == 0) {
                 break;
             }
-
         }
         System.out.println("[ 버블정렬 종료 ]");
 
