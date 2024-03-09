@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class BubbleSort {
     // 버블 정렬
+    // 배열의 뒷쪽부터 정렬하는 방법
     public static void main(String[] args) throws IOException {
 
         int[] arr = {5, 4, 52, 10, 3, 45, 33};
