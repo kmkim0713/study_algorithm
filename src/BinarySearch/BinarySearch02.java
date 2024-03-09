@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+package BinarySearch;
 
 public class BinarySearch02 {
 

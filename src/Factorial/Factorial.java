@@ -1,3 +1,5 @@
+package Factorial;
+
 import java.util.EmptyStackException;
 
 public class Factorial {

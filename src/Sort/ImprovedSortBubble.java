@@ -1,10 +1,12 @@
+package Sort;
+
 import java.io.IOException;
 
 public class ImprovedSortBubble {
 
     public static void main(String[] args) throws IOException {
 
-        // SortBubble.java를 개선한 버블 정렬 코드
+        // sort.SortBubble.java를 개선한 버블 정렬 코드
         // swap은 숫자를 교환하기만 하는 메소드로 변경
         // swap이 일어나지 않는 부분도 for문을 도는 것이 비효율적
         // 마지막 swap 시점을 저장해 두었다가, while문을 새로 loop 할 때마다 안쪽 for문의 시작값에 할당하여

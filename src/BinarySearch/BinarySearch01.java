@@ -1,3 +1,5 @@
+package BinarySearch;
+
 import java.util.ArrayList;
 
 public class BinarySearch01 {

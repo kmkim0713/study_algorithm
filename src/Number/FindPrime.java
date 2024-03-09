@@ -1,3 +1,5 @@
+package Number;
+
 import java.util.ArrayList;
 
 public class FindPrime {
@@ -16,9 +18,6 @@ public class FindPrime {
                 System.out.println(i+"");
             }
         }
-
-
-
     }
 
 

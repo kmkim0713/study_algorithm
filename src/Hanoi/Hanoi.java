@@ -1,3 +1,5 @@
+package Hanoi;
+
 import java.io.*;
 import java.math.BigInteger;
 import java.util.Scanner;
