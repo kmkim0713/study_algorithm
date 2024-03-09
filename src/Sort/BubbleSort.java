@@ -2,12 +2,9 @@ package Sort;
 
 import java.io.IOException;
 
-public class SortBubble {
-
-
+public class BubbleSort {
+    // 버블 정렬
     public static void main(String[] args) throws IOException {
-
-        // 개선된 버블 정렬
 
         int[] arr = {5, 4, 52, 10, 3, 45, 33};
         int n = arr.length;

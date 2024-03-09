@@ -2,8 +2,8 @@ package Sort;
 
 import java.io.IOException;
 
-public class ImprovedSortBubble {
-
+public class BubbleSortImproved {
+    // 개선된 버블 정렬
     public static void main(String[] args) throws IOException {
 
         // sort.SortBubble.java를 개선한 버블 정렬 코드
