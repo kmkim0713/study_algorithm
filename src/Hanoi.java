@@ -1,38 +1,45 @@
+import java.io.*;
+import java.math.BigInteger;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Hanoi {
 
+    static BigInteger count = new BigInteger("2");
+    static StringBuilder sb = new StringBuilder(); // 맨 처음에 count값 출력을 위해 사용
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        Scanner s = new Scanner(System.in);
-        int n = s.nextInt();
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
 
-        System.out.println(n);
+        count = count.pow(n).subtract(BigInteger.ONE);
+
+        if (n <= 20){
+            hanoi(n, 1, 3, 2);
+            bw.write(count+"\n");
+            bw.write(sb.toString());
+        }else {
+            bw.write(count+"\n");
+        }
+        bw.flush();
+        bw.close();
 
     }
 
 
-    /**
-     * hanoi(N)
-     *
-     * 작업은 크게 3단계로 구성
-     * 1단계: N-1개의 원판을 1번에서 2번 막대로 옮긴다. 출발막대:1 도착막대:2
-     * 2단계: 하나 남은 N번째 원판을 3번 막대로 옮긴다 (출력)
-     * 3단계: N-1개의 원판을 2번에서 3번으로 옮긴다. 출발막대:2 도착막대:3
-     *
-     * **/
-    public static void hanoi(int n, int start, int end, int mid){
+    public static void hanoi(int n, int start, int end, int mid) {
 
-        if(n == 1){
-            System.out.println(start + " " + end);
-
+        if (n == 1) {
+            sb.append(start + " " + end + "\n");
+        } else {
+            hanoi(n - 1, start, mid, end);
+            sb.append(start + " " + end + "\n");
+            hanoi(n - 1, mid, end, start);
         }
-
-
-
-
     }
 
 }
