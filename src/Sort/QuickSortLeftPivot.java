@@ -34,17 +34,21 @@ public class QuickSortLeftPivot {
 
         while (left <= right) {
 
-            while (left <= end && arr[left] <= arr[pivot]) left++; // 배열의 끝까지 검사. pivot 같거나 더 작은지 검사하면서 인덱스 증가.
+            while (left <= end && arr[left] <= arr[pivot]) left++; // 배열의 끝까지 검사. pivot과 같거나 더 작은지 검사하면서 인덱스 증가.
 
-            while (right > start && arr[right] >= arr[pivot]) right--; // pivot 작은 인덱스로 갈 순 없음. pivot보다 큰지 검사하면서 인덱스 감소.
+            while (right > start && arr[right] >= arr[pivot]) right--; // pivot보다 작은 인덱스로 갈 순 없음. pivot보다 큰지 검사하면서 인덱스 감소.
 
             if (left > right) {
-                swap(arr, right, pivot); // 엇갈렸을 때는 오른쪽에서 시작한 hi와 피벗을 교체. hi가 있던 위치는 정렬위치가 확정
+                // 엇갈렸을 때는 오른쪽에서 시작한 right와 피벗을 교체. right가 있던 위치는 정렬위치가 확정
+                // right의 위치보다 오른쪽은 pivot보다 모두 큰 수다.
+                swap(arr, right, pivot);
             } else {
                 swap(arr, left, right); // 엇갈리지 않으면 서로 피벗보다 크거나 작아서 그런것이니 left, right 값 교체
             }
         }
 
+        // 엇갈린 경우 right와 pivot의 값을 교환하고 while문을 탈출하였으므로 right위치(pivot값으로 바뀐)는 고정이다.
+        // right를 기준으로 그룹을 다시 나눈다.
         quickSort(arr, start, right - 1);
         quickSort(arr, right + 1, end);
 

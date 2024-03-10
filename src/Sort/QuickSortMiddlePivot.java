@@ -51,7 +51,8 @@ public class QuickSortMiddlePivot {
             }
         }
 
-        // 엇갈리게 되면 while문 종료
+        // 엇갈리게 되면 그룹을 나누는 과정을 종료되어야하고 두 그룹으로 나누어져야하므로
+        // 두 그룹으로 나누기위한 기준값을 반환
         return left;
     }
 
