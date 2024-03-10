@@ -37,9 +37,9 @@ public class QuickSort {
 
             while (hi > start && arr[hi] >= arr[pivot]) hi--; // pivot보다 작은 인덱스로 갈 순 없음. pivot보다 큰지 검사하면서 인덱스 감소.
 
-            if (lo > hi) { // 엇갈렸을 때 피벗과 교체
+            if (lo > hi) { // 엇갈렸을 때는 오른쪽에서 시작한 hi와 피벗을 교체. hi가 있던 위치는 정렬위치가 확정
                 swap(arr, hi, pivot);
-            } else { // 엇갈리지 않으면 lo, hi 값 교체
+            } else { // 엇갈리지 않으면 서로 피벗보다 크거나 작아서 그런것이니 lo, hi 값 교체
                 swap(arr, lo, hi);
             }
         }
