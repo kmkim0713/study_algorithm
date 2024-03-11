@@ -36,10 +36,10 @@ public class MergeSort {
     // 합치기
     public static void merge(int[] arr, int m, int middle, int n) {
         int i = m;
-        int j = middle;
+        int j = middle + 1;
         int k = m; // sortedArr의 인덱스
 
-        while (i <= middle && j <= m) { // 인덱스번호이므로 등호 필수
+        while (i <= middle && j <= n) { // 인덱스번호이므로 등호 필수
             if (arr[i] <= arr[j]) {
                 sortedArr[k++] = arr[i++];
             } else {
@@ -47,12 +47,12 @@ public class MergeSort {
             }
         }
 
-        if (i > middle) {
+        if (i > middle) { // 왼쪽이 먼저 끝난 경우
             for (int t = j; t <= n; t++) {
                 sortedArr[k++] = arr[t];
             }
-        } else {
-            for (int t = i; t <= n; t++) {
+        } else { // 오른쪽이 먼저 끝난 경우
+            for (int t = i; t <= middle; t++) {
                 sortedArr[k++] = arr[t];
             }
         }
