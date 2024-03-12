@@ -2,7 +2,7 @@ package Sort;
 
 import java.io.IOException;
 
-public class QuickSort01 {
+public class QuickSort {
     // 퀵 정렬 (좌측 끝값을 피벗으로)
     // https://erinh.tistory.com/entry/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%ED%80%B5-%EC%A0%95%EB%A0%AC-Quick-sort-%EC%9E%90%EB%B0%94-Java
     // 분할 정복 알고리즘
@@ -24,18 +24,20 @@ public class QuickSort01 {
 
     public static void quickSort(int[] arr, int start, int end) {
 
-        if (start >= end) return;
-
-        int pivot = start;
-        int pivotValue = arr[pivot];
+        if (start >= end) {
+            return;
+        }
 
         int i = start + 1;
         int j = end;
 
-        while (i <= j) {
+        int pivot = start;
+        int pivotValue = arr[pivot];
 
-            while (arr[i] <= arr[pivot]) i++;
-            while (arr[j] >= arr[pivot] && j > start) j--;
+        while (i <= j) {
+            while (arr[i] <= pivotValue) i++;
+
+            while (arr[j] >= pivotValue && j > start) j--;
 
             if (i > j) {
                 swap(arr, pivot, j);
@@ -46,7 +48,6 @@ public class QuickSort01 {
 
         quickSort(arr, start, j - 1);
         quickSort(arr, j + 1, end);
-
 
     }
 
