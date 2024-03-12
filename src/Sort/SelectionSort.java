@@ -5,32 +5,30 @@ import java.io.IOException;
 public class SelectionSort {
     // 선택 정렬
     // 가장 작은 값을 제일 앞으로 보내기
+    // 시작은 앞에서부터, 검사는 뒤에서부터
 
     public static void main(String[] args) {
 
         int[] array = {15, 17, 52, 10, 3, 49, 33};
+
         int n = array.length;
         int start = 0;
 
-        while (start < n) {
+        while(start < n){
 
             int min = array[start];
-            int swapIndex = start;
+            int minIndex = start;
 
-            for (int j = n - 1; j >= start; j--) {
-                if (min > array[j]) {
+            for (int j = n - 1 ; j >= start ; j--){
+
+                if(min > array[j]){
                     min = array[j];
-                    swapIndex = j;
+                    minIndex = j;
                 }
             }
-
-            swap(array, start, swapIndex);
-            printarray("정렬 후... ", array, start, swapIndex);
-            start++;
+            swap(array, start++, minIndex);
         }
-
         printarray("[최종 출력]", array, -1, -1);
-
     }
 
     public static void swap(int[] array, int a, int b) {
