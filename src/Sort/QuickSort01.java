@@ -25,28 +25,28 @@ public class QuickSort01 {
     public static void quickSort(int[] arr, int start, int end) {
 
         int pivot = start;
-        int pivotValue = arr[start];
-
+        int pivotValue = arr[pivot];
         int i = start + 1;
         int j = end;
 
-        if ( start >= end ) return;
+        if(start >= end) return;
 
-        while (i <= j) {
+        while(i <= j){
 
-            while (arr[i] <= pivotValue) i++;
+            while(arr[i] <= pivotValue) i++;
 
-            while (arr[j] >= pivotValue && j > start) j--;
+            while(arr[j] >= pivotValue && j > start) j--;
 
-            if (i > j) {
-                swap(arr, pivot, j);
-            } else {
+            if(i > j){
+                swap(arr, pivot , j);
+            } else{
                 swap(arr, i, j);
             }
         }
 
         quickSort(arr, start, j - 1);
         quickSort(arr, j + 1, end);
+
     }
 
     public static void swap(int[] arr, int a, int b) {
