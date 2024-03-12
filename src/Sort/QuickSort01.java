@@ -16,49 +16,43 @@ public class QuickSort01 {
     public static void main(String[] args) throws IOException {
 
         int[] arr = {35, 17, 7, 22, 86, 49, 10};
-        quickSort(arr);
+        quickSort(arr, 0, arr.length - 1);
 
         printArr("정렬 후 ", arr, -1, -1);
 
     }
 
-    public static void quickSort(int[] arr) {
-        quickSort(arr, 0, arr.length - 1);
-    }
-
     public static void quickSort(int[] arr, int start, int end) {
-        if (start >= end) {
-            return;
-        }
 
-        int key = start; // 피벗값
+        int pivot = start;
+        int pivotValue = arr[start];
 
         int i = start + 1;
         int j = end;
 
+        if ( start >= end ) return;
+
         while (i <= j) {
 
-            while (arr[i] <= arr[key]) {
-                i++;
-            }
-            while (arr[j] >= arr[key] && j > start) {
-                j--;
-            }
+            while (arr[i] <= pivotValue) i++;
+
+            while (arr[j] >= pivotValue && j > start) j--;
 
             if (i > j) {
-                int temp = arr[j];
-                arr[j] = arr[key];
-                arr[key] = temp;
+                swap(arr, pivot, j);
             } else {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                swap(arr, i, j);
             }
         }
 
-        quickSort(arr, start, j-1);
-        quickSort(arr, j+1, end);
+        quickSort(arr, start, j - 1);
+        quickSort(arr, j + 1, end);
+    }
 
+    public static void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
     }
 
 
