@@ -6,6 +6,7 @@ public class SelectionSort {
     // 선택 정렬. 복잡도는 n^2
     // 가장 작은 값을 제일 앞으로 보내기
     // 시작은 앞에서부터, 검사는 뒤에서부터
+    // 한번의 pass가 끝나면 제일 작은 숫자가 맨 앞으로 감
 
     public static void main(String[] args) {
 
@@ -29,7 +30,7 @@ public class SelectionSort {
             }
             swap(array, i++, minIndex);
         }
-        printarray("[최종 출력]", array, -1, -1);
+        printArr("[최종 출력]", array, -1, -1);
     }
 
     public static void swap(int[] array, int a, int b) {
@@ -41,7 +42,7 @@ public class SelectionSort {
 
     }
 
-    public static void printarray(String msg, int[] array, int a, int b) {
+    public static void printArr(String msg, int[] array, int a, int b) {
         System.out.printf(msg + "\t\t");
         for (int i = 0; i < array.length; i++) {
             if (i == a) {

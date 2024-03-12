@@ -4,60 +4,38 @@ import java.io.IOException;
 
 public class BubbleSort {
     // 버블 정렬
-    // 배열의 뒷쪽부터 정렬하는 방법
+    // 아주 직관적. 당장 옆의 값과 비교해서 더 작은 값을 앞으로 보낸다.
+    // 한번의 pass가 끝나면 제일 큰 숫자가 맨 뒤로 감
+
     public static void main(String[] args) throws IOException {
 
         int[] arr = {5, 4, 52, 10, 3, 45, 33};
         int n = arr.length;
 
-        for (int i = 0; i < n; i++) {
-
-            int exchangeCount = 0; // 교환횟수
-            for (int j = n - 1; j > 0; j--) {
-                printArr("[ 정렬 전 ]", arr, j - 1, j);
-                exchangeCount = swap(arr, j - 1, j, exchangeCount);
-                printArr("[ 정렬 후 ]", arr, j - 1, j);
-            }
-            System.out.println("<< 교환 횟수: " + exchangeCount + " >>");
-            System.out.printf("[ %d번째 pass 종료 ] \n", i + 1);
-
-            if (exchangeCount == 0) {
-                break;
+        for (int i = 0; i < n; i++){
+            int temp;
+            for(int j = 0; j < i - 1; j++){
+                if(arr[j] > arr[j+1]){
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
             }
         }
-        System.out.println("[ 버블정렬 종료 ]");
+        printArr("[ 종료 ]",arr,-1,-1);
 
     }
 
-    public static int swap(int[] arr, int a, int b, int exchangeCount) {
-        int temp = 0;
-        if (arr[a] > arr[b]) {
-            temp = arr[a];
-            arr[a] = arr[b];
-            arr[b] = temp;
-            System.out.println("\t\t[ swap 발생 ]");
-            exchangeCount++;
-        } else {
-            System.out.println("\t\t[ skip ]");
-        }
-        return exchangeCount;
-
-    }
-
-    public static void printArr(String msg, int[] arr, int a, int b) {
-        System.out.println("--- " + msg + " ---");
-        System.out.print("\t\t");
-        for (int i = 0; i < arr.length; i++) {
-            if (i == a || i == b) {
-                System.out.printf("[%d] ", arr[i]);
+    public static void printArr(String msg, int[] array, int a, int b) {
+        System.out.printf(msg + "\t\t");
+        for (int i = 0; i < array.length; i++) {
+            if (i == a) {
+                System.out.printf("[%d] ", array[i]);
                 continue;
             }
-            System.out.printf("%d ", arr[i]);
+            System.out.printf("%d ", array[i]);
         }
         System.out.println();
-        if (msg.equals("[ 정렬 후 ]")) {
-            System.out.println();
-        }
-    }
 
+    }
 }
