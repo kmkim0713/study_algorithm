@@ -3,9 +3,9 @@ package Sort;
 import java.io.IOException;
 
 public class SelectionSort {
-    // 단순 선택 정렬
-    // 해당 순서에 원소를 넣을 위치는 이미 정해져 있고, 그 위치에 어떤 원소를 넣을지 선택하는 알고리즘
-    // loop를 수행할 때 마다 배열에서 가장 작은 수를 찾고 배열의 제일 앞에서부터 차례대로 교환한다.
+
+    // 선택정렬
+
     public static void main(String[] args) throws IOException {
 
         int[] arr = {15, 17, 52, 10, 3, 49, 33};
