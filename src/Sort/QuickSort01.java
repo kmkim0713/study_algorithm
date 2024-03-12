@@ -2,7 +2,7 @@ package Sort;
 
 import java.io.IOException;
 
-public class QuickSortLeftPivot {
+public class QuickSort01 {
     // 퀵 정렬 (좌측 끝값을 피벗으로)
     // https://erinh.tistory.com/entry/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%ED%80%B5-%EC%A0%95%EB%A0%AC-Quick-sort-%EC%9E%90%EB%B0%94-Java
     // 분할 정복 알고리즘
@@ -11,59 +11,54 @@ public class QuickSortLeftPivot {
     // 둘다 정지한 경우에는 정지한 위치한 값끼리 교환
     // 움직이다가 엇갈릿 경우는 작은 값과 피벗의 값을 교환
     // 이후로는 옮겨진 피벗의 위치를 기준으로 2개로 나눠서 각각 정렬 수행. 이때 피벗은 각각의 맨 처음의 인덱스 값
+    // 복잡도는 N*logN 이지만 최악의 경우는 N^2 이다 --> 이미 정렬되어있는 경우의 데이터
 
     public static void main(String[] args) throws IOException {
 
         int[] arr = {35, 17, 7, 22, 86, 49, 10};
         quickSort(arr);
 
-        printArr("정렬 후 ",arr,-1,-1);
+        printArr("정렬 후 ", arr, -1, -1);
 
     }
 
     public static void quickSort(int[] arr) {
-
         quickSort(arr, 0, arr.length - 1);
-
     }
 
     public static void quickSort(int[] arr, int start, int end) {
+        if (start >= end) {
+            return;
+        }
 
-        if (start >= end) return;
+        int key = start; // 피벗값
 
-        // 가장 왼쪽의 값을 pivot으로 지정. 비교검사는 pivot + 1 부터 시작.
-        int pivot = start;
-        int left = start + 1;
-        int right = end;
+        int i = start + 1;
+        int j = end;
 
+        while (i <= j) {
 
-        while (left <= right) {
+            while (arr[i] <= arr[key]) {
+                i++;
+            }
+            while (arr[j] >= arr[key] && j > start) {
+                j--;
+            }
 
-            while (left <= end && arr[left] <= arr[pivot]) left++; // 배열의 끝까지 검사. pivot과 같거나 더 작은지 검사하면서 인덱스 증가.
-
-            while (right > start && arr[right] >= arr[pivot]) right--; // pivot보다 작은 인덱스로 갈 순 없음. pivot보다 큰지 검사하면서 인덱스 감소.
-
-            if (left > right) {
-                // 엇갈렸을 때는 오른쪽에서 시작한 right와 피벗을 교체. right가 있던 위치는 정렬위치가 확정
-                // right의 위치보다 오른쪽은 pivot보다 모두 큰 수다.
-                swap(arr, right, pivot);
+            if (i > j) {
+                int temp = arr[j];
+                arr[j] = arr[key];
+                arr[key] = temp;
             } else {
-                swap(arr, left, right); // 엇갈리지 않으면 서로 피벗보다 크거나 작아서 그런것이니 left, right 값 교체
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
         }
 
-        // 엇갈린 경우 right와 pivot의 값을 교환하고 while문을 탈출하였으므로 right위치(pivot값으로 바뀐)는 고정이다.
-        // right를 기준으로 그룹을 다시 나눈다.
-        quickSort(arr, start, right - 1);
-        quickSort(arr, right + 1, end);
+        quickSort(arr, start, j-1);
+        quickSort(arr, j+1, end);
 
-    }
-
-
-    public static void swap(int[] arr, int a, int b) {
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
     }
 
 
