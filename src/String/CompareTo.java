@@ -7,7 +7,6 @@ public class CompareTo {
 
     public static void main(String[] args) throws IOException {
 
-
         String str01 = "aaa";
         String str02 = "bbb";
         String str03 = "김";
@@ -15,7 +14,7 @@ public class CompareTo {
 
         System.out.println(str01.compareTo(str02));
         System.out.println(str02.compareTo(str03));
-        System.out.println(str02.compareTo(str03));
+        System.out.println(str03.compareTo(str04));
     }
 
 }
