@@ -1,4 +1,4 @@
-package AlgorithmCodingTest.NumberSort2750;
+package AlgorithmCodingTest.P19_NumberSort;
 
 import java.io.*;
 
