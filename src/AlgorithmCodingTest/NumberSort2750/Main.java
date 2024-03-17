@@ -17,8 +17,8 @@ public class Main {
 
         quickSort(arr, 0, arr.length - 1);
 
-        for(int temp : arr){
-            System.out.print(temp+" ");
+        for (int temp : arr) {
+            System.out.print(temp + " ");
         }
 
     }
@@ -27,7 +27,7 @@ public class Main {
 
         if (start >= end) return;
 
-        int i = start + 1;
+        int i = start;
         int j = end;
 
         int pivot = start;
@@ -35,9 +35,9 @@ public class Main {
 
         while (i <= j) {
 
-            while (pivotValue >= arr[i]) i++;
+            while (i <= end && pivotValue >= arr[i]) i++;
 
-            while (pivotValue <= arr[j] && j > start) j--;
+            while (j > start && pivotValue <= arr[j]) j--;
 
             if (i > j) {
                 swap(arr, pivot, j);
@@ -53,8 +53,7 @@ public class Main {
 
     public static void swap(int[] arr, int a, int b) {
         int temp = arr[a];
-        arr[a] = b;
+        arr[a] = arr[b];
         arr[b] = temp;
     }
-
 }

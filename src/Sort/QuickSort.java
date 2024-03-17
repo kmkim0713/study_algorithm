@@ -15,7 +15,7 @@ public class QuickSort {
 
     public static void main(String[] args) throws IOException {
 
-        int[] arr = {35, 17, 7, 22, 86, 49, 10};
+        int[] arr = {315, 17, 7, 22, 86, 49, 10};
         quickSort(arr, 0, arr.length - 1);
 
         printArr("정렬 후 ", arr, -1, -1);
@@ -28,16 +28,18 @@ public class QuickSort {
             return;
         }
 
-        int i = start + 1;
+        int i = start;
         int j = end;
 
         int pivot = start;
         int pivotValue = arr[pivot];
 
         while (i <= j) {
-            while (arr[i] <= pivotValue) i++;
+            while (i <= end && arr[i] <= pivotValue) i++;
 
-            while (arr[j] >= pivotValue && j > start) j--;
+            while (j > start && arr[j] >= pivotValue) {
+                j--;
+            }
 
             if (i > j) {
                 swap(arr, pivot, j);
